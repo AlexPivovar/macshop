@@ -1,0 +1,16 @@
+<div class="col-md-6">
+  <h2 class="text-center">Добавить товар</h2>
+  <form>
+    <div class="form-group">
+      <label for="name">Название:</label>
+      <input type="text" [(ngModel)]="product.name" placeholder="Название" name="name" class="form-control" id="name">
+    </div>
+
+    <div class="form-group">
+      <label for="cost">Цена:</label>
+      <input type="number" [(ngModel)]="product.cost" placeholder="Цена" name="cost" class="form-control" id="cost">
+    </div>
+
+    <button class="btn btn-success" (click)="createProduct()">Добавить товар</button>
+  </form>
+</div>
