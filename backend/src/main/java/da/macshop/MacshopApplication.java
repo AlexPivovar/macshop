@@ -1,4 +1,4 @@
-package da.macshop.macshop;
+package da.macshop;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package da.macshop.macshop;
+package da.macshop;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
