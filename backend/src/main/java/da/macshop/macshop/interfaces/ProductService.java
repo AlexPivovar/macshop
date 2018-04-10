@@ -5,13 +5,13 @@ import da.macshop.macshop.entities.Product;
 import java.util.List;
 
 public interface ProductService {
-    Product create(Product product);
+    Product create(final Product product);
 
-    Product delete(int id);
+    Product delete(final int id);
 
     List<Product> findAll();
 
-    Product findById(int id);
+    Product findById(final int id);
 
-    Product update(Product product);
+    Product update(final Product product);
 }

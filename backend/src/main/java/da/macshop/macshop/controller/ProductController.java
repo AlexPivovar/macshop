@@ -2,7 +2,6 @@ package da.macshop.macshop.controller;
 
 import da.macshop.macshop.entities.Product;
 import da.macshop.macshop.interfaces.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,26 +10,29 @@ import java.util.List;
 @RestController
 @RequestMapping({"/catalog"})
 public class ProductController {
-    @Autowired
-    ProductService productService;
+    private final ProductService productService;
+
+    public ProductController(final ProductService productService) {
+        this.productService = productService;
+    }
 
     @PostMapping
-    public Product create(@RequestBody Product product){
+    public Product create(@RequestBody final Product product){
         return productService.create(product);
     }
 
     @GetMapping(path = {"/{id}"})
-    public Product findOne(@PathVariable("id") int id){
+    public Product findOne(@PathVariable("id") final int id){
         return productService.findById(id);
     }
 
     @PutMapping
-    public Product update(@RequestBody Product product){
+    public Product update(@RequestBody final Product product){
         return productService.update(product);
     }
 
     @DeleteMapping(path ={"/{id}"})
-    public Product delete(@PathVariable("id") int id) {
+    public Product delete(@PathVariable("id") final int id) {
         return productService.delete(id);
     }
 
