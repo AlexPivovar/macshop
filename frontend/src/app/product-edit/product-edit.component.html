@@ -1,0 +1,39 @@
+<form #productForm="ngForm">
+  <fieldset>
+    <h2>{{product.id ? 'Edit' : 'Add'}} Product</h2>
+
+
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Product Name"
+             [(ngModel)]="product.name"
+             name="name">
+    </div>
+
+    <div class="form-group">
+      <label for="cost">Cost</label>
+      <input type="number" class="form-control" id="cost" placeholder="Product Cost"
+             [(ngModel)]="product.cost"
+             name="cost">
+    </div>
+
+    <!--<div class="form-group">-->
+    <!--<label for="product-type">Product type</label>-->
+    <!--<select class="form-control" id="product-type">-->
+    <!--<option>iPhone</option>-->
+    <!--<option>iPad</option>-->
+    <!--<option>MacBook</option>-->
+    <!--</select>-->
+    <!--</div>-->
+
+    <div class="edit-buttons">
+      <div *ngIf="product.id; then editButton else saveButton"></div>
+      <ng-template #editButton>
+        <button class="btn btn-success" (click)="updateProduct(product.id, product)">Edit</button>
+        <button type="button" class="btn btn-danger" (click)="removeProduct(product.id)">Delete</button>
+      </ng-template>
+      <ng-template #saveButton><button class="btn btn-success" (click)="createProduct()">Save</button></ng-template>
+      <button type="button" class="btn btn-info" routerLink="/catalog">Cancel</button>
+    </div>
+  </fieldset>
+</form>
