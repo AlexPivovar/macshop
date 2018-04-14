@@ -4,19 +4,16 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 
 import {AppComponent} from './app.component';
-import {HeaderComponent} from './header/header.component';
-import {FooterComponent} from './footer/footer.component';
 import {AppRoutingModule} from "./app.routing.module";
-import {ProductComponent} from './product/product.component';
-import {ProductService} from "./product/product.service";
-import {ProductEditComponent} from './product-edit/product-edit.component';
+import {ProductComponent} from './components/product/product.component';
+import {ProductService} from "./service/product.service";
+import {ProductEditComponent} from './components/product-edit/product-edit.component';
+import {GlobalComponentsModule} from "./components/global/global-components.module";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
     ProductComponent,
     ProductEditComponent
   ],
@@ -24,7 +21,8 @@ import {ProductEditComponent} from './product-edit/product-edit.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    GlobalComponentsModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

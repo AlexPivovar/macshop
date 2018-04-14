@@ -1,10 +1,10 @@
-<h2>Product List</h2>
-
-<div>
+<div class="product-list">
+  <h2>Product List</h2>
   <table class="table table-hover table-success">
     <thead>
     <tr>
-      <th scope="col" class="hidden col-sm-1">Id</th>
+      <th scope="col" class="hidden">Id</th>
+      <th scope="col">Photo</th>
       <th scope="col">Name</th>
       <th scope="col">Cost</th>
       <th scope="col">
@@ -14,17 +14,16 @@
     </thead>
     <tbody>
     <tr class="table-secondary" *ngFor="let product of products">
-      <td class="hidden col-sm-1">{{product.id}}</td>
+      <td class="hidden">{{product.id}}</td>
+      <td>Photo</td>
       <td>
-        <button class="btn btn-danger" [routerLink]="['/product-edit',product.id]">{{product.name}}
-        </button>
+        <a [routerLink]="['/product-edit',product.id]">{{product.name}}</a>
       </td>
       <td>{{product.cost}}</td>
       <td>
-        <button class="btn btn-danger" (click)="removeProduct(product.id)">Delete</button>
+        <button class="btn btn-danger" (click)="deleteProduct(product.id)">Delete</button>
       </td>
     </tr>
     </tbody>
   </table>
 </div>
-
