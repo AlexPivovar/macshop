@@ -1,18 +1,18 @@
 package da.macshop.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.ToString;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.*;
-
 import java.io.Serializable;
 
 @Entity
-//@Getter
-//@Setter
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode

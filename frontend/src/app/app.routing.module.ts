@@ -1,7 +1,8 @@
 import {RouterModule, Routes} from "@angular/router";
-import {ProductComponent} from "./product/product.component";
+import {ProductComponent} from "./components/product/product.component";
 import {NgModule} from "@angular/core";
-import {ProductEditComponent} from "./product-edit/product-edit.component";
+import {ProductEditComponent} from "./components/product-edit/product-edit.component";
+import {GlobalComponentsModule} from './components/global/global-components.module';
 
 const routes: Routes = [
   {
@@ -20,10 +21,12 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    GlobalComponentsModule
   ],
   exports: [
-    RouterModule
+    RouterModule,
+    GlobalComponentsModule
   ],
   declarations: []
 })

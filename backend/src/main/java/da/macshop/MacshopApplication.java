@@ -8,6 +8,5 @@ public class MacshopApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(MacshopApplication.class, args);
-
     }
 }

@@ -1,0 +1,58 @@
+#product-list {
+  margin: 1%;
+  text-align: center;
+}
+
+.table thead th {
+  text-align: center;
+  vertical-align: inherit;
+}
+
+.table tbody td {
+  text-align: center;
+  vertical-align: inherit;
+  color: #000;
+}
+
+@media (min-width: 320px) and (max-width: 544px) {
+  table thead tr th {
+    font-size: 0.8rem;
+    padding: 0.2rem;
+  }
+
+  table tbody tr td {
+    font-size: 0.8rem;
+    padding: 0.2rem;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 374px) {
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  button {
+    font-size: 0.6328125rem;
+
+  }
+}
+
+@media (min-width: 375px) and (max-width: 499px) {
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  button {
+    font-size: 0.68rem;
+  }
+}
+
+@media (min-width: 1200px){
+  table thead tr th {
+    font-size: 1.2rem;
+  }
+
+  table tbody tr td {
+    font-size: 1.2rem;
+  }
+}

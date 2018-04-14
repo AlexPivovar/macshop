@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ProductService} from '../product/product.service';
+import {ProductService} from '../../service/product.service';
 import {NgForm} from '@angular/forms';
-import {Product} from '../product/product';
+import {Product} from '../../models/product';
 
 @Component({
   selector: 'app-product-edit',
