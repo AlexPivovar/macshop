@@ -2,7 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProductService} from '../../service/product.service';
-import {NgForm} from '@angular/forms';
 import {Product} from '../../models/product';
 
 @Component({
@@ -25,7 +24,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
       const id = params['id'];
 
       if (id) {
-        this.productService.get(id).subscribe((product: any) => {
+        this.productService.get(id).subscribe((product: Product) => {
           if (product) {
             this.product = product;
           }
@@ -35,30 +34,38 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   }
 
   gotoList() {
-    this.router.navigate(['/catalog']);
+    this.router.navigate(['/product-list']);
   }
 
   createProduct(): void {
     this.productService.create(this.product)
       .subscribe(() => {
-        alert('Created!!!');
-        this.gotoList();
+        console.log('Created product and description');
       });
+
+    alert('Created!!!');
+
+    this.gotoList();
   }
 
   updateProduct(id: string, product: any): void {
     this.productService.update(id, product)
       .subscribe(() => {
-        alert('Updated!!!');
-        this.gotoList();
+        console.log('Update product');
       });
+
+    alert('Updated!!!');
+    this.gotoList();
   }
 
   removeProduct(id: string): void {
     this.productService.remove(id).subscribe(() => {
-      alert('Deleted!!!');
-      this.gotoList();
     }, error => console.error(error));
+
+    this.productService.getAll();
+
+    alert('Deleted!!!');
+    this.gotoList();
   }
 
   ngOnDestroy() {

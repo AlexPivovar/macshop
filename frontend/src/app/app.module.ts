@@ -8,13 +8,15 @@ import {AppRoutingModule} from './app.routing.module';
 import {ProductComponent} from './components/product/product.component';
 import {ProductService} from './service/product.service';
 import {ProductEditComponent} from './components/product-edit/product-edit.component';
+import {CatalogComponent} from './components/catalog/catalog.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
-    ProductEditComponent
+    ProductEditComponent,
+    CatalogComponent
   ],
   imports: [
     BrowserModule,

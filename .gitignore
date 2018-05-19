@@ -45,3 +45,5 @@ gen
 # System Files
 .DS_Store
 Thumbs.db
+/.directory
+/frontend/.directory

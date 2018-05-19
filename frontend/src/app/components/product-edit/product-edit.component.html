@@ -17,6 +17,27 @@
              name="cost">
     </div>
 
+    <div class="form-group">
+      <label for="year">Year</label>
+      <input type="number" class="form-control" id="year" placeholder="Product Year"
+             [(ngModel)]="product.productDescription.year"
+             name="year">
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input type="text" class="form-control" id="description" placeholder="Product Description"
+             [(ngModel)]="product.productDescription.description"
+             name="description">
+    </div>
+
+    <div class="form-group">
+      <label for="color">Color</label>
+      <input type="text" class="form-control" id="color" placeholder="Product Color"
+             [(ngModel)]="product.productDescription.color"
+             name="color">
+    </div>
+
     <!--<div class="form-group">-->
     <!--<label for="product-type">Product type</label>-->
     <!--<select class="form-control" id="product-type">-->
@@ -33,7 +54,7 @@
         <button type="button" class="btn btn-danger" (click)="removeProduct(product.id)">Delete</button>
       </ng-template>
       <ng-template #saveButton><button class="btn btn-success" (click)="createProduct()">Save</button></ng-template>
-      <button type="button" class="btn btn-info" routerLink="/catalog">Cancel</button>
+      <button type="button" class="btn btn-info" routerLink="/product-list">Cancel</button>
     </div>
   </fieldset>
 </form>

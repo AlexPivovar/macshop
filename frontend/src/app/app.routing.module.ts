@@ -3,10 +3,11 @@ import {ProductComponent} from "./components/product/product.component";
 import {NgModule} from "@angular/core";
 import {ProductEditComponent} from "./components/product-edit/product-edit.component";
 import {GlobalComponentsModule} from './components/global/global-components.module';
+import {CatalogComponent} from './components/catalog/catalog.component';
 
 const routes: Routes = [
   {
-    path: 'catalog',
+    path: 'product-list',
     component: ProductComponent
   },
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'product-edit/:id',
     component: ProductEditComponent
+  },
+  {
+    path: 'catalog',
+    component: CatalogComponent
   }
 ];
 
