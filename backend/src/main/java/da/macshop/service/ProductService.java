@@ -22,23 +22,25 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public Product getOne(int id) {
+    public Product getOne(long id) {
         return productRepository.getOne(id);
     }
 
-    public Product update(int id, Product product) {
+    public Product update(long id, Product product) {
         Product result = productRepository.getOne(id);
 
         if (product != null) {
             result.setName(product.getName());
             result.setCost(product.getCost());
+            result.setProductDescription(product.getProductDescription());
+            result.setProductDescription(product.getProductDescription());
             productRepository.saveAndFlush(result);
         }
 
         return result;
     }
 
-    public Product delete(int id) {
+    public Product delete(long id) {
         Product product = productRepository.getOne(id);
         productRepository.deleteById(id);
 

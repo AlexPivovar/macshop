@@ -11,6 +11,13 @@ import {Product} from '../../models/product';
 })
 export class ProductEditComponent implements OnInit, OnDestroy {
   product: Product = new Product();
+  allColors: string[] = ["black", "white", "blue", "green"];
+
+  /*  allColors: string[] = ["черный", "белый", "синий", "зеленый", "розовый", "желтый", "космический серый", "золотой",
+    "серебристый", "розовое золото", "глянцево-чёрный", "красный"];*/
+
+  availableColors: string[];
+  chosenColors: Map<string, boolean> = new Map<string, boolean>();
 
   sub: Subscription;
 
@@ -27,6 +34,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
         this.productService.get(id).subscribe((product: Product) => {
           if (product) {
             this.product = product;
+            this.initColorMap();
           }
         });
       }
@@ -66,6 +74,41 @@ export class ProductEditComponent implements OnInit, OnDestroy {
 
     alert('Deleted!!!');
     this.gotoList();
+  }
+
+  initColorMap(): void {
+    this.availableColors = this.product.productDescription.color.split(";");
+
+    for (let color of this.allColors) {
+      for (let availableColor of this.availableColors) {
+        if (color === availableColor) {
+          this.chosenColors.set(color, true);
+
+          break;
+        } else {
+          this.chosenColors.set(color, false);
+        }
+      }
+    }
+  }
+
+  isAvailable(currentColor: string): boolean {
+    return this.chosenColors.get(currentColor);
+  }
+
+  refreshColorModel(): void {
+    this.product.productDescription.color = "";
+
+    for (let color of this.allColors) {
+      if (this.chosenColors.get(color)) {
+        this.product.productDescription.color += (color + ";");
+      }
+    }
+  }
+
+  setColorAvailability(currentColor: string) {
+    this.chosenColors.set(currentColor, !this.chosenColors.get(currentColor));
+    this.refreshColorModel();
   }
 
   ngOnDestroy() {

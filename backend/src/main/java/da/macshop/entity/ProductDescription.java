@@ -23,19 +23,31 @@ public class ProductDescription implements Serializable {
 
     @Id
     @GeneratedValue
-    private int id;
+    private long id;
+
     private @NonNull
     int year;
+
     private @NonNull
     String description;
+
     private @NonNull
     String color;
 
-    public int getId() {
+    private @NonNull
+    String type;
+
+    private @NonNull
+    String photoLink;
+
+    private @NonNull
+    int quantity;
+
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -61,5 +73,29 @@ public class ProductDescription implements Serializable {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getPhotoLink() {
+        return photoLink;
+    }
+
+    public void setPhotoLink(String photoLink) {
+        this.photoLink = photoLink;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

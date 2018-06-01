@@ -1,60 +1,86 @@
 <form #productForm="ngForm">
   <fieldset>
-    <h2>{{product.id ? 'Edit' : 'Add'}} Product</h2>
-
+    <h2>{{product.id ? 'Редактирование' : 'Добавление'}} товара</h2>
 
     <div class="form-group">
-      <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" placeholder="Product Name"
+      <label for="product-type">Тип товара</label>
+      <select class="form-control" id="product-type"
+              [(ngModel)]="product.productDescription.type"
+              name="product_type">>
+        <option>iPhone</option>
+        <option>iPad</option>
+        <option>MacBook</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Название</label>
+      <input type="text" class="form-control" id="name" placeholder="Название"
              [(ngModel)]="product.name"
              name="name">
     </div>
 
     <div class="form-group">
-      <label for="cost">Cost</label>
-      <input type="number" class="form-control" id="cost" placeholder="Product Cost"
+      <label for="cost">Цена</label>
+      <input type="number" class="form-control" id="cost" placeholder="Цена"
              [(ngModel)]="product.cost"
              name="cost">
     </div>
 
     <div class="form-group">
-      <label for="year">Year</label>
-      <input type="number" class="form-control" id="year" placeholder="Product Year"
+      <label for="year">Год</label>
+      <input type="number" class="form-control" id="year" placeholder="Год"
              [(ngModel)]="product.productDescription.year"
              name="year">
     </div>
 
     <div class="form-group">
-      <label for="description">Description</label>
-      <input type="text" class="form-control" id="description" placeholder="Product Description"
+      <label for="description">Описание</label>
+      <input type="text" class="form-control" id="description" placeholder="Описание товара"
              [(ngModel)]="product.productDescription.description"
              name="description">
     </div>
 
     <div class="form-group">
-      <label for="color">Color</label>
-      <input type="text" class="form-control" id="color" placeholder="Product Color"
+      <label for="color">Цвет</label>
+      <input type="text" class="form-control" readonly="" id="color" placeholder="Цвет товара"
              [(ngModel)]="product.productDescription.color"
              name="color">
     </div>
 
-    <!--<div class="form-group">-->
-    <!--<label for="product-type">Product type</label>-->
-    <!--<select class="form-control" id="product-type">-->
-    <!--<option>iPhone</option>-->
-    <!--<option>iPad</option>-->
-    <!--<option>MacBook</option>-->
-    <!--</select>-->
-    <!--</div>-->
+    <div id="color_checkboxes">
+      <div class="form-group">
+        <div class="custom-control custom-checkbox" *ngFor="let color of allColors">
+          <input type="checkbox" class="custom-control-input" id="color_{{color}}"
+                 [checked]="isAvailable(color)" (change)="setColorAvailability(color)">
+          <label class="custom-control-label" for="color_{{color}}">{{color}}</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="photo-link">Ссылка на фото</label>
+      <input type="url" class="form-control" id="photo-link" placeholder="Ссылка на фото"
+             [(ngModel)]="product.productDescription.photoLink"
+             name="photo_link">
+    </div>
+
+    <div class="form-group">
+      <label for="quantity">Количество на складе</label>
+      <input type="url" class="form-control" id="quantity" placeholder="Количество на складе"
+             [(ngModel)]="product.productDescription.quantity"
+             name="quantity">
+    </div>
 
     <div class="edit-buttons">
       <div *ngIf="product.id; then editButton else saveButton"></div>
       <ng-template #editButton>
-        <button class="btn btn-success" (click)="updateProduct(product.id, product)">Edit</button>
-        <button type="button" class="btn btn-danger" (click)="removeProduct(product.id)">Delete</button>
+        <button class="btn btn-success" (click)="updateProduct(product.id, product)">Изменить</button>
+        <button type="button" class="btn btn-danger" (click)="removeProduct(product.id)">Удалить</button>
       </ng-template>
-      <ng-template #saveButton><button class="btn btn-success" (click)="createProduct()">Save</button></ng-template>
-      <button type="button" class="btn btn-info" routerLink="/product-list">Cancel</button>
+      <ng-template #saveButton>
+        <button class="btn btn-success" (click)="createProduct()">Создать</button>
+      </ng-template>
+      <button type="button" class="btn btn-info" routerLink="/product-list">Назад</button>
     </div>
   </fieldset>
 </form>

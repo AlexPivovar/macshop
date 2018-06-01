@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()
@@ -10,7 +10,10 @@ export class ProductService {
   }
 
   create(product: any) {
-    return this.http.post(this.API + '/create', product);
+    const headers = new HttpHeaders();
+    headers.append("Content-Type", "application/json;charset=UTF-8");
+
+    return this.http.post(this.API + '/create', product, {headers: headers});
   }
 
   getAll(): Observable<any> {
@@ -25,8 +28,9 @@ export class ProductService {
 
   update(id: string, product: any) {
     const httpParams = new HttpParams().set('id', id);
+    const headers = new HttpHeaders().append("Content-Type", "application/json;charset=UTF-8");
 
-    return this.http.put(this.API + '/update', product, {params: httpParams});
+    return this.http.put(this.API + '/update', product, {params: httpParams, headers: headers});
   }
 
   remove(id: string) {

@@ -1,0 +1,52 @@
+@media (min-width: 500px) {
+  form {
+    width: 500px !important;
+    text-align: center;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 374px) {
+  form {
+    margin: 1%;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  p {
+    font-size: 0.625rem;
+  }
+
+  button {
+    font-size: 0.6328125rem;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 499px) {
+  form {
+    margin: 1%;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  button {
+    font-size: 0.68rem;
+  }
+}
+
+form {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1%;
+}
+
+h2 {
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+}

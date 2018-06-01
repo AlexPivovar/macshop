@@ -9,6 +9,7 @@ import {ProductService} from '../../service/product.service';
 })
 export class CatalogComponent implements OnInit {
   products: Product[];
+  availableColors: string[];
 
   constructor(private productService: ProductService) {
   }
@@ -18,4 +19,16 @@ export class CatalogComponent implements OnInit {
       this.products = data;
     });
   }
+
+  inStock(product: Product): boolean {
+    return product.productDescription.quantity > 0;
+  }
+
+  initColorMap(product: Product): string[] {
+    this.availableColors = product.productDescription.color.split(";");
+    this.availableColors.splice(length - 1, 1);
+
+    return this.availableColors;
+  }
+
 }

@@ -1,0 +1,18 @@
+import {Injectable} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs/Observable";
+
+@Injectable()
+export class AuthService {
+  public API = '//localhost:8080';
+
+  constructor(private http: HttpClient) {
+  }
+
+  attemptAuth(username: string, password: string): Observable<any> {
+    const credentials = {username: username, password: password};
+
+    return this.http.post<any>(this.API + '/token/generate-token', credentials);
+  }
+
+}

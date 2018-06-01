@@ -27,20 +27,23 @@ public class Product implements Serializable {
 
     @Id
     @GeneratedValue
-    private int id;
+    private long id;
+
     private @NonNull
     String name;
+
     private @NonNull
     int cost;
+
     @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     @JoinColumn(name = "id", nullable = false)
     private ProductDescription productDescription;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

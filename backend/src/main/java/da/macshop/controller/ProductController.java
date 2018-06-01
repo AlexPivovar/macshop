@@ -2,6 +2,7 @@ package da.macshop.controller;
 
 import da.macshop.entity.Product;
 import da.macshop.service.ProductService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,7 @@ public class ProductController {
         this.productService = productService;
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/create")
     public Product create(@RequestBody Product product) {
         productService.create(product);
@@ -35,17 +37,19 @@ public class ProductController {
     }
 
     @GetMapping("/product")
-    public Product getOne(@RequestParam("id") int id) {
+    public Product getOne(@RequestParam("id") long id) {
         return productService.getOne(id);
     }
 
-    @PutMapping("/update")
-    public Product update(@RequestParam("id") int id, @RequestBody Product product) {
+    @PreAuthorize("hasRole('ADMIN')")
+    @PutMapping(value = "/update", produces = "application/json;charset=utf-8")
+    public Product update(@RequestParam("id") long id, @RequestBody Product product) {
         return productService.update(id, product);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete")
-    public Product delete(@RequestParam("id") int id) {
+    public Product delete(@RequestParam("id") long id) {
         return productService.delete(id);
     }
 }

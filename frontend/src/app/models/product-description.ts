@@ -3,4 +3,7 @@ export class ProductDescription {
   year: number;
   description: string;
   color: string;
+  type: string;
+  photoLink: string;
+  quantity: number;
 }

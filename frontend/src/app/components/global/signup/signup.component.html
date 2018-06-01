@@ -1,0 +1,153 @@
+<form #signupForm="ngForm">
+  <fieldset>
+    <legend>Форма регистрации</legend>
+    <div class="form-group">
+      <label for="username">Имя пользователя</label>
+      <input type="text" class="form-control" (blur)="confirmUsername()" id="username"
+             placeholder="Введите логин"
+             [(ngModel)]="user.username"
+             name="username">
+
+      <div *ngIf="user.username; then notEmptyUsernameField else emptyUsernameField"></div>
+      <ng-template #notEmptyUsernameField>
+        <div *ngIf="confirmUsername(); then successUsername else dangerUsername"></div>
+        <ng-template #successUsername>
+          <p class="text-success">Имя пользователя введено успешно</p>
+        </ng-template>
+        <ng-template #dangerUsername>
+          <p class="text-danger">Имя пользователя короче 4 символов</p>
+        </ng-template>
+      </ng-template>
+
+      <ng-template #emptyUsernameField>
+        <p class="text-info">*Логин должен быть длиннее 4 символов</p>
+      </ng-template>
+    </div>
+
+    <div class="form-group">
+      <label for="firstname">Имя</label>
+      <input type="text" class="form-control" (blur)="confirmFirstname()" id="firstname"
+             aria-describedby="firstnameHelp"
+             placeholder="Введите имя"
+             [(ngModel)]="user.firstName"
+             name="firstname">
+
+      <div *ngIf="user.firstName; then notEmptyFirstnameField else emptyFirstnameField"></div>
+      <ng-template #notEmptyFirstnameField>
+        <div *ngIf="confirmFirstname(); then successFirstname else dangerFirstname"></div>
+        <ng-template #successFirstname>
+          <p class="text-success">Имя введено успешно</p>
+        </ng-template>
+        <ng-template #dangerFirstname>
+          <p class="text-danger">Имя введено некорректо</p>
+        </ng-template>
+      </ng-template>
+
+      <ng-template #emptyFirstnameField>
+        <p class="text-info">*Имя не может быть короче 2 символов</p>
+      </ng-template>
+    </div>
+
+    <div class="form-group">
+      <label for="lastname">Фамилия</label>
+      <input type="text" class="form-control" (blur)="confirmLastname()" id="lastname" aria-describedby="lastnameHelp"
+             placeholder="Введите фамилию"
+             [(ngModel)]="user.lastName"
+             name="lastname">
+
+      <div *ngIf="user.lastName; then notEmptyLastnameField else emptyLastnameField"></div>
+      <ng-template #notEmptyLastnameField>
+        <div *ngIf="confirmLastname(); then successLastname else dangerLastname"></div>
+        <ng-template #successLastname>
+          <p class="text-success">Фамилия введена успешно</p>
+        </ng-template>
+        <ng-template #dangerLastname>
+          <p class="text-danger">Фамилия введена некорректо</p>
+        </ng-template>
+      </ng-template>
+
+      <ng-template #emptyLastnameField>
+        <p class="text-info">*Фамилия не может быть короче 2 символов</p>
+      </ng-template>
+    </div>
+
+    <div>
+      <label for="email">Email адресс</label>
+      <input type="email" class="form-control validate" (blur)="confirmEmail()" id="email"
+             aria-describedby="emailHelp" placeholder="Введите email"
+             [(ngModel)]="user.email"
+             name="email">
+
+      <div *ngIf="user.email; then notEmptyEmailField else emptyEmailField"></div>
+      <ng-template #notEmptyEmailField>
+        <div *ngIf="confirmEmail(); then successEmail else dangerEmail"></div>
+        <ng-template #successEmail>
+          <p class="text-success">Адресс электронной почты введен успешно</p>
+        </ng-template>
+        <ng-template #dangerEmail>
+          <p class="text-danger">Пользователь с данным адрессом электронной почты уже зарегистрирован или email введен
+            некорректо</p>
+        </ng-template>
+      </ng-template>
+
+      <ng-template #emptyEmailField>
+        <p class="text-info">*Здесь требуется ввести адресс электронной почты</p>
+      </ng-template>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Пароль</label>
+      <input type="password" class="form-control" (blur)="confirmPassword()" id="password" placeholder="Введите пароль"
+             [(ngModel)]="user.password"
+             name="password">
+
+      <div *ngIf="user.password; then notEmptyPasswordField else emptyPasswordField"></div>
+      <ng-template #notEmptyPasswordField>
+        <div *ngIf="confirmPassword(); then successPassword else dangerPassword"></div>
+        <ng-template #successPassword>
+          <p class="text-success">Пароль введен успешно</p>
+        </ng-template>
+        <ng-template #dangerPassword>
+          <p class="text-danger">Пароль введен некорректо</p>
+        </ng-template>
+      </ng-template>
+
+      <ng-template #emptyPasswordField>
+        <p class="text-info">*Пароль должен содержать не менее 8 символов</p>
+      </ng-template>
+    </div>
+
+    <div class="form-group">
+      <label for="confirmPassword">Повтор пароля</label>
+      <input type="password" class="form-control" (blur)="equalsPassword()" id="confirmPassword"
+             placeholder="Введите пароль еще раз"
+             [(ngModel)]="confirmPass"
+             name="confirmPassword">
+
+      <div *ngIf="confirmPass; then notEmptyConfirmPasswordField else emptyConfirmPasswordField"></div>
+      <ng-template #notEmptyConfirmPasswordField>
+        <div *ngIf="equalsPassword(); then successConfirmPassword else dangerConfirmPassword"></div>
+        <ng-template #successConfirmPassword>
+          <p class="text-success">Пароли совпадают</p>
+        </ng-template>
+        <ng-template #dangerConfirmPassword>
+          <p class="text-danger">Пароли не совпадают</p>
+        </ng-template>
+      </ng-template>
+
+      <ng-template #emptyConfirmPasswordField>
+        <p class="text-info">*Пароли должны совпадать</p>
+      </ng-template>
+    </div>
+
+    <div *ngIf="confirmForm(); then successForm else dangerForm"></div>
+    <ng-template #successForm>
+      <button type="submit" (click)="createUser()" class="btn btn-success">Зарегистрироваться</button>
+    </ng-template>
+    <ng-template #dangerForm>
+      <button class="btn btn-primary disabled">Зарегистрироваться</button>
+      <button type="reset" class="btn btn-warning">Очистить</button>
+    </ng-template>
+
+  </fieldset>
+</form>
